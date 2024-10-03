@@ -6,7 +6,7 @@ expand(config());
 
 const app = express();
 
-const PORT = process.env.PORT || 2000;
+const PORT = process.env.PORT || 3000;
 
 app.use('/', (req: Request, res: Response) => {
   res.send('<h1>Hello, World!</h1>');
