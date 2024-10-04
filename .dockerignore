@@ -4,3 +4,8 @@ Dockerfile
 .env
 .git
 .gitignore
+docker-compose.bak.yml
+docker-compose.dev.yml
+docker-compose.prod.yml
+docker-compose.yml
+eslint.config.js
