@@ -5,3 +5,14 @@ services:
       - '3000:3000'
     environment:
       - PORT=3000
+
+  mongo:
+    image: mongo:latest
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=nizam
+      - MONGO_INITDB_ROOT_PASSWORD=nizam
+    volumes:
+      - mongo-db:/data/db
+
+volumes:
+  mongo-db:
