@@ -1,14 +1,11 @@
-import { config } from 'dotenv';
-import { expand } from 'dotenv-expand';
 import express, { Request, Response } from 'express';
 import mongoose from 'mongoose';
-
-expand(config());
+import env from './config/env';
 
 const app = express();
 
 mongoose
-  .connect('mongodb://nizam:nizam@mongo:27017/?authSource=admin')
+  .connect(env.MONGO_URL)
   .then(() => console.log('Successfully connected with DB'))
   .catch((e) => console.error(e));
 

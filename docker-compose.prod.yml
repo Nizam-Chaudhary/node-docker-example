@@ -1,9 +1,13 @@
+# for production
 services:
   node-app:
     build:
       context: .
+      # set args to install only production dependencies
       args:
         NODE_ENV: production
+    env_file:
+      - .env
     environment:
       - NODE_ENV=production
-    command: ['npm', 'start']
+    command: ['yarn', 'start']

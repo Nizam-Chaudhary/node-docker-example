@@ -1,18 +1,29 @@
+# list all container required
 services:
+  # start node-app
   node-app:
+    # build docker image from docker file
     build: .
+    # connect ports
     ports:
       - '3000:3000'
+    # set environment value required by image
     environment:
       - PORT=3000
 
   mongo:
+    # latest mongo db image
     image: mongo:latest
+    # set environment value required by image
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=nizam
-      - MONGO_INITDB_ROOT_PASSWORD=nizam
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=docker
+    # set volumes to persist data
     volumes:
       - mongo-db:/data/db
+    ports:
+      - '27017:27017'
 
+# list all named volumes
 volumes:
   mongo-db:
