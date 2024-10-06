@@ -9,3 +9,9 @@ services:
     env_file:
       - .env
     command: ['yarn', 'dev']
+
+  mongo:
+    # latest mongo db image
+    image: mongo:latest
+    ports:
+      - '27017:27017'

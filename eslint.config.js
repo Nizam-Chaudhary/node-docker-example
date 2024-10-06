@@ -4,6 +4,11 @@ import tseslint from 'typescript-eslint';
 
 export default [
   { files: ['**/*.{js,mjs,cjs,ts}'] },
+  {
+    extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
+  },
+  { parser: '@typescript-eslint/parser' },
+  { plugins: ['@typescript-eslint'] },
   { languageOptions: { globals: globals.node } },
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,

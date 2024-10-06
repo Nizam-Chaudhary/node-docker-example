@@ -10,6 +10,8 @@ services:
     # set environment value required by image
     environment:
       - PORT=3000
+    depends_on:
+      - mongo
 
   mongo:
     # latest mongo db image
@@ -21,8 +23,9 @@ services:
     # set volumes to persist data
     volumes:
       - mongo-db:/data/db
-    ports:
-      - '27017:27017'
+
+  redis:
+    image: redis
 
 # list all named volumes
 volumes:
