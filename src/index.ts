@@ -1,4 +1,5 @@
 import RedisStore from 'connect-redis';
+import cors from 'cors';
 import express, { Request, Response } from 'express';
 import session from 'express-session';
 import mongoose from 'mongoose';
@@ -11,7 +12,11 @@ let redisClient = createClient({
   url: `redis://${env.REDIS_URL}:${env.REDIS_PORT}`,
 });
 redisClient.connect().catch(console.error);
+
 const app = express();
+
+app.use(cors());
+app.enable('trust proxy');
 
 app.use(
   session({
@@ -45,11 +50,13 @@ connectWithRetry();
 app.use('/api/v1/posts', postRouter);
 app.use('/api/v1/users', userRouter);
 
-app.use('*', (req: Request, res: Response) => {
+app.use('/api/v1', (req: Request, res: Response) => {
+  console.log('IT ran');
   res.status(404).json({
     status: false,
     message: 'Route not found',
   });
+  return;
 });
 
 const PORT = env.PORT || 3000;

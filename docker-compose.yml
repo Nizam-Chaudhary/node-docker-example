@@ -1,12 +1,14 @@
 # list all container required
 services:
+  nginx:
+    image: nginx:stable-alpine
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+
   # start node-app
   node-app:
     # build docker image from docker file
     build: .
-    # connect ports
-    ports:
-      - '3000:3000'
     # set environment value required by image
     environment:
       - PORT=3000
