@@ -25,4 +25,4 @@ ENV PORT=3000
 EXPOSE ${PORT}
 
 # run project
-CMD [ "tsx", "src/index.ts" ]
+CMD [ "yarn", "start" ]
